@@ -1,0 +1,7 @@
+{
+  "name": "atriainstallation",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
