@@ -1,0 +1,108 @@
+<ion-header id="header" style="z-index: 999">
+  <ion-navbar *ngIf="!start" hideBackButton="false" color="darkitem">
+    <ion-title>
+      Maps
+    </ion-title>
+  </ion-navbar>
+  <ion-navbar *ngIf="start" hideBackButton="true" color="darkitem">
+    <ion-title>
+      Maps
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content id="content">
+  <div>
+    <ion-item text-wrap style="border-top:2px solid;border-color:#2d3038;" no-lines color="darkitem">
+      <h1 style="padding-bottom:5px;font-weight: bold;">{{kirim.to_name}}</h1>
+      <p style="font-size:12px;padding-bottom:5px;">{{kirim.to_address}} {{kirim.to_address_1}} {{kirim.to_city}} {{kirim.to_code_post}}</p>
+      <h3 style="font-weight: bold;">{{kirim.to_telp}}</h3>
+    </ion-item>
+  </div>
+  <div id="map_canvas" class="full-map"></div>
+</ion-content>
+<ion-footer id="footer" style="background: #363a45;">
+  <ion-list style="background:#363a45;color:#fff;">
+    <div style="text-align: center;border-bottom:1px solid;border-color:#dedede;font-size:15px;">
+      <ion-row>
+        <ion-col padding style="text-align: left;border-right:1px solid;border-color:#dedede;">Jarak Tempuh: {{jaraktempuh}}</ion-col>
+        <ion-col padding style="text-align: left;">Waktu: {{waktuperjalanan}}</ion-col>
+      </ion-row>
+    </div>
+    <div style="text-align: center;border-bottom:1px solid;border-color:#dedede;font-size:15px;">
+      <ion-row>
+        <ion-col>
+          <button ion-button clear (click)="doCheckBarang()">
+            <ion-icon name="md-filing" style="font-size:40px;color:#fff;"></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button clear (click)="doMaps()">
+            <ion-icon name="md-map" style="font-size:40px;color:#fff;"></ion-icon>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button clear (click)="doReport()">
+            <ion-icon name="md-flag" style="font-size:40px;color:#fff;"></ion-icon>
+          </button>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-list>
+  <ion-row style="padding:5px;padding-right:10px;">
+    <ion-col>
+      <button *ngIf="status == '0'" item-start style="height: 50px;font-size:20px;width:100%;" ion-button full color="secondary"
+        (click)="doSendSMS()">Mulai</button>
+      <button *ngIf="status == '1'" item-start style="height: 50px;font-size:20px;width:100%;" ion-button full color="secondary"
+        (click)="doSampaiTujuan()">Sampai Tujuan</button>
+        <button *ngIf="status == '2'" item-start style="height: 50px;font-size:20px;width:100%;" ion-button full color="secondary"
+        (click)="doGetCamera()">Kamera</button>
+      <button *ngIf="status == '3'" item-start style="height: 50px;font-size:20px;width:100%;" ion-button full color="secondary"
+        (click)="doSelesai()">Selesai</button>
+    </ion-col>
+  </ion-row>
+</ion-footer>
+<div *ngIf="checkshow == true" id="myModalItems" class="modal-items">
+  <ion-content class="modal-content-items" style="background:#363a45;color:#fff;">
+    <ion-grid padding>
+      <ion-row class="row-content">
+        <ion-col col-4 padding class="col-content">Part</ion-col>
+        <ion-col col-2 padding class="col-content">Qty</ion-col>
+        <ion-col col-6 padding class="col-content">
+          Description
+        </ion-col>
+      </ion-row>
+      <ion-row *ngFor="let part of itemsall" class="row-content-list">
+        <ion-col col-4 padding class="col-content">{{part.part_no}}</ion-col>
+        <ion-col col-2 padding class="col-content">{{part.part_qty}}</ion-col>
+        <ion-col col-6 padding class="col-content">{{part.part_description}}
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-buttons padding>
+      <button style="height: 50px;font-size:15px;width:100%;" ion-button full color="secondary" (click)="doOffAdd()">CLOSE</button>
+    </ion-buttons>
+  </ion-content>
+</div>
+<div *ngIf="camerashow == true" id="myModalItems" class="modal-items">
+  <ion-content class="modal-content-items" style="background:#363a45;color:#fff;">
+    <ion-grid padding>
+      <ion-row *ngIf="photos.length != 0" class="row-content-list">
+        <ion-col *ngFor="let picture of photos" col-4 class="col-content">
+          <img src="{{picture.img_src}}" imageViewer style="width:100%;" />
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="photos.length == 0" class="row-content-list">
+        <ion-col col-12 class="col-content">
+          <img src="assets/imgs/users.png" style="width:100%;" />
+        </ion-col>
+      </ion-row>
+      <button style="height: 50px;font-size:15px;width:100%;" ion-button full color="greenlake" (click)="doCamera()">
+        <ion-icon style="font-size:30px;" name="camera"></ion-icon>
+      </button>
+    </ion-grid>
+    <ion-buttons padding>
+      <button style="height: 50px;font-size:15px;width:100%;" ion-button full color="secondary" (click)="doSubmit()">DONE</button>
+      <button style="height: 50px;font-size:15px;width:100%;" ion-button full color="danger" (click)="doCloseCamera()">CLOSE</button>
+    </ion-buttons>
+  </ion-content>
+</div>

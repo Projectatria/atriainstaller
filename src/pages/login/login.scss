@@ -1,0 +1,93 @@
+page-login {
+    .scroll-content {
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+    input[type=text], input[type=password] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
+    
+    button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+    }
+    
+    button:hover {
+        opacity: 0.8;
+    }
+    
+    .cancelbtn {
+        width: auto;
+        padding: 10px 18px;
+        background-color: #f44336;
+    }
+    
+    .imgcontainer {
+        text-align: center;
+    }
+    
+    img.avatar {
+        width: 100%
+    }
+    
+    .container-row {
+        background: transparent;
+        width:50%;
+        margin:auto;
+    }
+    .container-login {
+        text-align:left;
+        color:#fff;
+        font-size:20px;
+        padding-top:8px;
+        margin-left:3%;
+    }
+    .container {
+        padding: 16px;
+    }
+    
+    span.psw {
+        float: right;
+        padding-top: 16px;
+    }
+    
+    /* Change styles for span and cancel button on extra small screens */
+    @media screen and (max-width: 600px) {
+        span.psw {
+           display: block;
+           float: none;
+        }
+        .cancelbtn {
+           width: 100%;
+        }
+        img.avatar {
+            width:30%;
+            border-radius: 50%;
+        }
+        .container-row {
+            background: transparent;
+            width:80%;
+            margin:auto;
+        }
+        .container {
+            padding: 16px;
+        }
+        .container-login {
+            text-align:center;
+            color:#fff;
+            font-size:20px;
+            padding-top:10px;
+            margin-left:0%;
+        }
+    }
+}

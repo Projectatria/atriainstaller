@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar color="darkitem">
+    <ion-title>Login Installer</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content style="background:#363a45;">
+  <form [formGroup]="myForm" style="margin-top:10%;">
+    <ion-row class="container-row">
+      <ion-col col-12 col-md-3 col-xl-3 style="background: transparent;border:0px;">
+        <div class="imgcontainer">
+          <img style="border: 2px solid;border-color:#fff;" src="../../assets/imgs/users.png" class="avatar">
+        </div>
+      </ion-col>
+      <ion-col col-12 col-md-9 col-xl-9 style="background: transparent;border:0px;">
+        <div class="container-login">
+          Login
+        </div>
+        <div class="container">
+          <input type="text" placeholder="ID Driver" formControlName="userid" required>
+          <input type="password" placeholder="Password" formControlName="password" required>
+          <button type="submit" (click)="doLogin()">Login</button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

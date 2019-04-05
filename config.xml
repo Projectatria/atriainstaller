@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>atriainstallation</name>
-    <description>An awesome Ionic/Cordova app.</description>
-    <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content src="index.html" />
+<widget id="com.atria.installation" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Atria Installation</name>
+    <description>Atria Installation.</description>
+    <author email="hi@ionicframework" href="http://ionicframework.com/">Atria Dev</author>
+    <content original-src="index.html" src="http://192.168.0.19:8100" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -82,4 +82,14 @@
     <plugin name="cordova-plugin-splashscreen" spec="5.0.2" />
     <plugin name="cordova-plugin-ionic-webview" spec="^3.0.0" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
+    <plugin name="cordova-plugin-googlemaps" spec="^2.5.3">
+        <variable name="API_KEY_FOR_ANDROID" value="AIzaSyDfHl87jzz9rsXcLWTyweT3B7MEyRF0vyI" />
+    </plugin>
+    <allow-navigation href="http://192.168.0.19:8100" />
+    <plugin name="cordova-plugin-nativestorage" spec="^2.3.2" />
+    <plugin name="cordova-plugin-background-mode" spec="^0.7.2" />
+    <plugin name="cordova-plugin-insomnia" spec="^4.3.0" />
+    <plugin name="cordova-plugin-camera" spec="^4.0.3" />
+    <plugin name="cordova-plugin-file-transfer" spec="^1.7.1" />
+    <engine name="browser" spec="5.0.4" />
 </widget>

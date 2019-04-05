@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-navbar color="darkitem">
+    <div style="text-align:center;height: 0px;">
+      <button ion-button clear color="secondary" style="margin-top:-5px;z-index:999;padding:10px;" (click)="doLogout()">
+        <ion-icon name="md-power" style="font-size: 30px;font-weight: bold;"></ion-icon>
+      </button>
+    </div>
+    <div *ngIf="checkshow == false" style="text-align:right;height: 0px;">
+      <button ion-button clear color="light" style="margin-top:-5px;z-index:999;padding:10px;" (click)="doSettings()">
+        <ion-icon name="md-key" style="font-size: 30px;"></ion-icon>
+      </button>
+    </div>
+    <div *ngIf="checkshow == true" style="text-align:right;height: 0px;">
+      <button ion-button clear color="light" style="margin-top:-5px;z-index:999;padding:10px;" (click)="doOffAdd()">
+        <ion-icon name="md-close" style="font-size: 30px;"></ion-icon>
+      </button>
+    </div>
+    <ion-title style="color:#217481;text-shadow: 
+    -1px -1px 0px #dedede,
+     0px -1px 0px #dedede,
+     1px -1px 0px #dedede,
+    -1px  0px 0px #dedede,
+     1px  0px 0px #dedede,
+    -1px  1px 0px #dedede,
+     0px  1px 0px #dedede,
+     1px  1px 0px #dedede,
+    -2px -2px 0px #dedede,">
+      {{notruk}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content style="background:#363a45;">
+  <ion-card *ngFor="let kirim of datakirim" style="background:#363a45;">
+    <ion-row>
+      <ion-col col-2 style="border-right:1px solid;border-color:#dedede;font-size:30px;font-weight: bold;text-align: center;">
+        <div style="margin-top:40px;color:#fff;">{{kirim.no_urut_group}}</div>
+      </ion-col>
+      <ion-col col-10>
+        <ion-card-content padding>
+          <h2>
+            <b style="color:#fff;">Receipt No : {{kirim.receipt_no}}</b>
+          </h2>
+          <div>
+            <p style="color:#fff;">
+              <b>{{kirim.to_name}}</b>
+            </p>
+            <p style="color:#fff;">{{kirim.to_address}} {{kirim.to_address_1}} {{kirim.to_city}} {{kirim.to_code_post}}</p>
+            <p style="color:#fff;">{{kirim.to_telp}}</p>
+            <div>
+              <div>
+                <p style="color:#fff;">
+                  <b *ngIf="kirim.no_urut_group == 1">{{kirim.diff_distance}} dari Lokasi Gudang ({{kirim.diff_time}}) </b>
+                  <b *ngIf="kirim.no_urut_group != 1">{{kirim.diff_distance}} dari Lokasi Diatas ({{kirim.diff_time}}) </b>
+                </p>
+              </div>
+            </div>
+          </div>
+        </ion-card-content>
+        <ion-row style="border-top:1px solid;border-color:#dedede;">
+          <ion-col>
+            <button *ngIf="kirim.status == 'OPEN'" ion-button full color="secondary" (click)="doMaps(kirim)">GO</button>
+            <button *ngIf="kirim.status == 'PENDING'" ion-button full color="secondary" (click)="doMaps(kirim)">PENDING</button>
+            <button *ngIf="kirim.status == 'SHIPMENT'" ion-button full color="secondary" (click)="doMaps(kirim)">SHIPMENT</button>
+            <button *ngIf="kirim.status == 'ARRIVED'" ion-button full color="secondary" (click)="doMaps(kirim)">ARRIVED</button>
+            <button *ngIf="kirim.status == 'DONE'" ion-button full color="secondary" (click)="doMaps(kirim)">DONE</button>
+            <button *ngIf="kirim.status == 'CLSD'" disabled ion-button full color="secondary">CLSD</button>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+</ion-content>
